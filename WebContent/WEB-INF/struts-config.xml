@@ -3,7 +3,6 @@
 Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 <struts-config>
 	<form-beans>
-		
 		<form-bean name="trangChuForm" type="form.TrangChuForm" />
 		<form-bean name="dangNhapForm" type="form.DangNhapForm" />
 		<form-bean name="chiTietBaiDangForm" type="form.ChiTietBaiDangForm" />
@@ -11,15 +10,13 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 		<form-bean name="dangBanForm" type="form.DangBanForm" />
 		<form-bean name="dangKiForm" type="form.DangKiForm" />
 		<form-bean name="trangNguoiDungForm" type="form.TrangNguoiDungForm" />
-		
+		<form-bean name="testForm" type="form.AbcForm" />
 	</form-beans>
 	<action-mappings>
 	
 		<action input="/log.jsp" name="dangNhapForm"
 			path="/dang-nhap" scope="request" type="action.DangNhapAction">
-			
 			<forward name="trangquanli" path="/trang-quan-ly.do" redirect="true"/>
-<!--			<forward name="trangnguoidung" path="/trang-ca-nhan.do" />-->
 			<forward name="trangnguoidung" path="/trang-chu.do" />
 			<forward name="trangbichan" path="/block.jsp" />
 			<forward name="saimatkhau" path="/log.jsp" />
@@ -27,19 +24,21 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="trangchu" path="/trang-chu.do" />
 		</action>
 		
-		<action input="/log.jsp" name="trangChuForm"
+		<!-- TRANG CHU -->
+		<action input="/index.jsp" name="trangChuForm"
 			path="/trang-chu" scope="request" type="action.TrangChuAction">
 			<forward name="index" path="/index.jsp" />
 			<forward name="home" path="/home.jsp" />
 		</action>
 		
+		<!-- DANG XUAT -->
 		<action input="/log.jsp" name=""
 			path="/dang-xuat" scope="request" type="action.DangXuatAction">
 			<forward name="dangXuatThanhCong" path="/trang-chu.do" />
 			<forward name="dangXuatThatBai" path="/trang-chu.do" />
 		</action>
 		
-		<!-- chi tiet rao ban -->
+		<!-- CHI TIET RAO BAN -->
 		<action input="/log.jsp" name="chiTietBaiDangForm" path="/chi-tiet-bai-dang" 
 				scope="request" type="action.ChiTietBaiDangAction">
 			<forward name="xemCheDoKhach" path="/chiTietBaiDang.jsp" />
@@ -48,7 +47,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="xemchedoquanli" path="/chiTietBaiDangLogged.jsp" />
 		</action>
 		
-		<!-- tim kiem -->
+		<!-- TIM KIEM -->
 		<action input="/log.jsp" name="ketQuaTimKiemForm" path="/ket-qua-tim-kiem" 
 				scope="request" type="action.KetQuaTimKiemAction">
 			<forward name="ketQua" path="/ketQuaTimKiem.jsp" />
@@ -70,6 +69,7 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="dangnhaplai" path="/trang-chu.do" />
 		</action>
 		
+		<!-- PHAN LUONG` TRANG CA NHAN -->
 		<action input="/log.jsp" name="" path="/trang-ca-nhan" 
 				scope="request" type="action.TrangCaNhanAction">
 			<forward name="trangchu" path="/trang-chu.do" />
@@ -77,9 +77,16 @@ Configuration 1.3//EN" "http://struts.apache.org/dtds/struts-config_1_3.dtd">
 			<forward name="nguoiDung" path="/nguoi-dung.do" />
 		</action>
 		
+		<!-- TRANG CA NHAN CUA NGUOI DUNG -->
 		<action input="/log.jsp" name="trangNguoiDungForm" path="/nguoi-dung" 
 				scope="request" type="action.TrangNguoiDungAction">
 			<forward name="trangCaNhan" path="/user.jsp" />
+		</action>
+		
+		<action input="/log.jsp" name="testForm" path="/test"
+				scope="request" type="action.TestAction">
+			<forward name="log" path="/log.jsp" />
+			<forward name="reg" path="/reg.jsp" />
 		</action>
 		
 	</action-mappings>
